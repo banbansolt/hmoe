@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YSH</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      background-color: #007aff;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .faq-item {
+      margin-bottom: 20px;
+    }
+
+    .faq-item h3 {
+      margin-bottom: 5px;
+      color: #007aff;
+    }
+
+    .faq-item p {
+      margin: 0;
+      color: #555;
+    }
+
+    .contact-box {
+      margin-top: 40px;
+      padding: 20px;
+      border-top: 1px solid #ddd;
+    }
+
+    label {
+      display: block;
+      margin: 12px 0 4px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    button {
+      background-color: #007aff;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #005fcc;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>고객센터</h1>
+    <p>무엇을 도와드릴까요?</p>
+  </header>
+
+  <div class="container">
+
+ 
+
+    <section class="contact-box">
+      <h2>1:1 문의</h2>
+      <form>
+        <label for="name">이름</label>
+        <input type="text" id="name" placeholder="이름을 입력하세요" required />
+
+        <label for="email">이메일</label>
+        <input type="email" id="email" placeholder="답변 받을 이메일" required />
+
+        <label for="message">문의 내용</label>
+        <textarea id="message" rows="5" placeholder="문의하실 내용을 적어주세요." required></textarea>
+
+        <button type="submit">문의하기</button>
+      </form>
+    </section>
+
+    <section class="contact-info" style="margin-top: 40px;">
+      <h2>고객센터 연락처</h2>
+      <p>📞 전화: 1600-0000 (평일 09:00 ~ 18:00)</p>
+      <p>📧 이메일: help@naver.com</p>
+      <p>🏢 주소: 서울시 폴리텍 인공지능능 123</p>
+    </section>
+  </div>
+
+</body>
+</html>

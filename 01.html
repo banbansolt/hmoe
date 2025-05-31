@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>해외여행 | 여행의 모든 것</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    header {
+      background-color: white;
+      border-bottom: 1px solid #ddd;
+      padding: 16px 0;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav li {
+      display: inline-block;
+      margin: 0 15px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+      font-size: 15px;
+      position: relative;
+    }
+
+    nav a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 2px;
+      background-color: #007aff;
+    }
+
+    .hero {
+      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin: 0;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 40px 20px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      width: 320px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-content h3 {
+      margin-top: 0;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .card-content p {
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="숙제.html" class="active">전체메뉴</a></li>
+        <li><a href="00.html">국내 · 제주</a></li>
+        <li><a href="01.html">해외여행</a></li>
+        <li><a href="#">추천 여행지</a></li>
+        <li><a href="03.html">여행팁</a></li>
+        <li><a href="05.html">고객센터</a></li>
+        <li><a href="#">☰</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>여행의 모든 것</h1>
+    <p>지금 떠나고 싶은 도시를 찾아보세요!</p>
+  </section>
+
+  <section class="cards">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34" alt="파리">
+      <div class="card-content">
+        <h3>파리, 프랑스</h3>
+        <p>낭만의 도시, 파리에서 예술과 역사 속으로.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="imgs/10.jpg" alt="도쿄">
+      <div class="card-content">
+        <h3>도쿄, 일본</h3>
+        <p>전통과 현대가 공존하는 도시 도쿄.</p>
+      </div>
+    </div>
+  </section>
+    <section class="cards">
+    <div class="card">
+      <img src="imgs/9.jpg" alt="런던">
+      <div class="card-content">
+        <h3>영국, 런던</h3>
+        <p>낭만의 도시, 파리에서 예술과 역사 속으로.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="imgs/11.png" alt="워싱턴">
+      <div class="card-content">
+        <h3>미국, 워싱턴</h3>
+        <p>전통과 현대가 공존하는 도시 도쿄.</p>
+      </div>
+    </div>
+  
+</body>
+</html>

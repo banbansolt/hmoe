@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YSH</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f7f9fb;
+      margin: 0;
+      padding: 0 20px;
+      color: #333;
+    }
+
+    header {
+      background-color: #00a8ff;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    section {
+      max-width: 800px;
+      margin: 30px auto;
+    }
+
+    h2 {
+      border-bottom: 2px solid #00a8ff;
+      padding-bottom: 8px;
+      
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    .emoji {
+      font-size: 20px;
+      margin-right: 5px;
+    }
+  .nav-container {
+  border-bottom: 1px solid #ddd;
+  overflow-x: auto;
+  white-space: nowrap;
+  background-color: white;
+  width: 100%;
+  box-sizing: border-box;
+}
+.nav-bar {
+  display: inline-flex;
+  padding: 10px 20px;
+  gap: 20px;
+  align-items: center;
+  white-space: nowrap;
+}
+.nav-item {
+  font-weight: bold;
+  font-size: 14px;
+  color: #000;
+  cursor: pointer;
+  position: relative;
+  padding-bottom: 6px;
+  text-decoration: none;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.nav-item.active {
+  color: #007aff;
+}
+.nav-item.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #007aff;
+}
+.menu-icon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body>
+ 
+
+  <!-- 네비게이션 바 -->
+ <div class="nav-bar">
+  <div class="menu-icon">☰</div>
+  <a href="숙제.html" class="nav-item active">전체메뉴</div>
+  <a href="00.html" class="nav-item">국내 · 제주</div>
+  <a href="01.html"class="nav-item">해외여행</div>
+  
+  <a href="03.html" class="nav-item">여행팁</div>
+  <a href="05.html" class="nav-item">고객센터터</div>
+
+</div>
+  <header>
+    <h1>출발 전 여행 준비 가이드</h1>
+  </header>
+
+  <section>
+    <h2>🛫 출발 전 준비</h2>
+    <ul>
+      <li><strong>여권 유효기간 확인:</strong> 대부분 국가에서 6개월 이상 남아 있어야 입국 가능해요.</li>
+      <li><strong>비자 필요 여부 확인:</strong> 외교부 해외안전여행 사이트나 해당 국가 대사관에서 확인.</li>
+      <li><strong>여행자 보험 가입:</strong> 의료비, 도난, 취소 등 대비 필수!</li>
+      <li><strong>중요 문서 백업:</strong> 여권, 비자, 항공권, 호텔 바우처는 출력 + 클라우드 저장.</li>
+      <li><strong>환전은 미리미리:</strong> 공항보다 은행/앱이 유리. 소액은 현금, 나머지는 카드 추천.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🧳 짐 싸기 팁</h2>
+    <ul>
+      <li><strong>기내 반입 불가 물품 확인:</strong> 가위, 액체류(100ml 초과)는 수하물로.</li>
+      <li><strong>필수 품목:</strong> 멀티 어댑터, 보조 배터리, 의약품, 지퍼백, 여행용 슬리퍼</li>
+      <li><strong>짐 줄이기:</strong> 여행지 날씨와 숙소 제공 물품 확인해서 생략 가능!</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>✈️ 비행 중 & 공항</h2>
+    <ul>
+      <li><strong>좌석 미리 지정:</strong> 통로/창가 등 원하는 자리 체크인 전에!</li>
+      <li><strong>기내에서 수분 섭취:</strong> 탈수 예방 및 시차 적응에 효과적.</li>
+      <li><strong>환승 시 주의:</strong> 보안 검사 재진행 대비 시간 확보!</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🌍 현지에서</h2>
+    <ul>
+      <li><strong>로밍 or 유심:</strong> eSIM, 현지 SIM, 포켓 와이파이가 경제적.</li>
+      <li><strong>대중교통 앱 설치:</strong> Google Maps, CityMapper, Rome2Rio 등.</li>
+      <li><strong>간단한 현지어:</strong> 기본 인사말, 화장실 위치 정도는 외워가세요.</li>
+      <li><strong>문화 존중:</strong> 복장, 팁, 금기사항 미리 확인.</li>
+      <li><strong>소매치기 주의:</strong> 가방은 앞으로, 지갑은 앞주머니!</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📱 추천 앱</h2>
+    <ul>
+      <li>Google Translate: 실시간 번역</li>
+      <li>XE Currency: 환율 계산기</li>
+      <li>TripIt / Google Trips: 일정 관리</li>
+      <li>Maps.me: 오프라인 지도</li>
+      <li>Wise / Revolut: 해외 결제용 카드</li>
+    </ul>
+  </section>
+
+</body>
+</html>
