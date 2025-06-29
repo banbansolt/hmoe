@@ -1,156 +1,318 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YSH</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f2f2f2;
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YSH</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f2f2f2;
+        }
 
-    }
+        header {
+            text-align: center;
+        }
 
-    header {
-      text-align: center;
-    }
+        header li {
+            display: inline-block;
+            margin: 0 20px;
+        }
 
-    header li {
-      display: inline-block;
-      margin: 0 20px;
-    }
+        main {
+            background-image: url(imgs/6.jpg); /* 이 이미지 경로가 올바른지 확인하세요 */
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 84vh; /* 전체 화면 높이 */
+            position: relative;
+            color: white; /* 이미지의 텍스트 가시성을 높이기 위해 추가 */
+        }
 
-    main {
-      background-image: url(imgs/6.jpg);
-      background-size: cover;
-      background-position: center;
-      width: 100%;
-      height: 84vh; /* 전체 화면 높이 */ 
-      position: relative;
-    }
+        main * {
+            left: 50%;
+            top: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            display: inline-block;
+        }
 
-    main * {
-      left: 50%;
-      top: 50%;
-      position: absolute;
-      transform: translate(-50%, -50%);
-      display: inline-block;
-    }
+        main h1 {
+            font-size: 48px;
+            top: 42%;
+        }
 
-    main h1 {
-      font-size: 48px;  
-      top: 42%;
-    }
+        main p {
+            font-size: 20px;
+        }
 
-    main p {
-      font-size: 20px;
-    }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            bottom: 0;
+            width: 100%;
+        }
 
-   
+        .nav-container {
+            border-bottom: 1px solid #ddd;
+            overflow-x: auto;
+            white-space: nowrap;
+            background-color: white;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .nav-bar {
+            display: inline-flex;
+            padding: 10px 20px;
+            gap: 20px;
+            align-items: center;
+            white-space: nowrap;
+        }
+        .nav-item {
+            font-weight: bold;
+            font-size: 14px;
+            color: #000;
+            cursor: pointer;
+            position: relative;
+            padding-bottom: 6px;
+            text-decoration: none;
+            white-space: nowrap;
+        }
 
-    footer {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 20px;
-     
-      bottom: 0;
-      width: 100%;
-    }
+        .menu-icon {
+            font-size: 20px;
+            cursor: pointer;
+        }
 
-    .nav-container {
-      border-bottom: 1px solid #ddd;
-      overflow-x: auto;
-      white-space: nowrap;
-      background-color: white;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    .nav-bar {
-      display: inline-flex;
-      padding: 10px 20px;
-      gap: 20px;
-      align-items: center;
-      white-space: nowrap;
-    }
-    .nav-item {
-      font-weight: bold;
-      font-size: 14px;
-      color: #000;
-      cursor: pointer;
-      position: relative;
-      padding-bottom: 6px;
-      text-decoration: none;
-      white-space: nowrap;
-      text-decoration: none; /* 링크 밑줄 제거 */
-    }
-   
-  
-    .menu-icon {
-      font-size: 20px;
-      cursor: pointer;
-    }
+        .login-button {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 14px;
+            padding: 6px 12px;
+            background-color: #007aff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            z-index: 10;
+        }
 
-    .login-button {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 14px;
-      padding: 6px 12px;
-      background-color: #007aff;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      z-index: 10;
-    }
+        .login-button:hover {
+            background-color: #005fcc;
+        }
 
-    .login-button:hover {
-      background-color: #005fcc;
-    }
-  </style>
+        /* --- 로그인 모달 스타일 --- */
+        .login-modal {
+            display: none; /* 기본적으로 숨김 */
+            position: fixed; /* 화면에 고정 */
+            z-index: 20; /* 다른 요소 위에 표시 */
+            left: 0;
+            top: 0;
+            width: 100%; /* 전체 너비 */
+            height: 100%; /* 전체 높이 */
+            overflow: auto; /* 내용이 넘칠 경우 스크롤 허용 */
+            background-color: rgba(0, 0, 0, 0.5); /* 반투명 검은색 배경 */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-content {
+            background-color: #fefefe;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+            position: relative;
+        }
+
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .login-content h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .login-content input[type="text"],
+        .login-content input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box; /* 패딩을 너비에 포함 */
+        }
+
+        .login-content button {
+            background-color: #007aff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .login-content button:hover {
+            background-color: #005fcc;
+        }
+    </style>
 </head>
 
 <body>
-<!-- 헤더 -->
-  <header>
-    <!-- 로그인 버튼 -->
-    <button class="login-button">로그인</button>
+    <header>
+        <button class="login-button" id="authButton">로그인</button>
 
-    <!-- 네비게이션 바 -->
-    <div class="nav-bar">
-      <ul>
-        <li>
-          <a href="숙제.html" class="nav-item active">전체메뉴</a>
-        </li>
-        <li>
-          <a href="00.html" class="nav-item">국내 · 제주</a>
-        </li>
-        <li>
-          <a href="01.html"class="nav-item">해외여행</a>
-        </li>
-       
-        <li>
-          <a href="03.html" class="nav-item">여행팁</a>
-        </li>
-      
-        <li>
-          <a href="05.html" class="nav-item">고객센터</a>
-        </li>
-      </ul>
-      <div class="menu-icon">☰</div>
+        <div class="nav-bar">
+            <ul>
+                <li>
+                    <a href="숙제.html" class="nav-item active">전체메뉴</a>
+                </li>
+                <li>
+                    <a href="00.html" class="nav-item">국내 · 제주</a>
+                </li>
+                <li>
+                    <a href="01.html" class="nav-item">해외여행</a>
+                </li>
+                <li>
+                    <a href="03.html" class="nav-item">여행팁</a>
+                </li>
+                <li>
+                    <a href="05.html" class="nav-item">고객센터</a>
+                </li>
+            </ul>
+            <div class="menu-icon">☰</div>
+        </div>
+    </header>
+
+    <main>
+        <h1>여행선택의 목적지</h1>
+        <p>지금 떠나고 싶은 도시를 찾아보세요!</p>
+    </main>
+
+    <div id="login-modal" class="login-modal">
+        <div class="login-content">
+            <span class="close-button">&times;</span>
+            <h2>로그인</h2>
+            <form id="login-form">
+                <input type="text" id="username" placeholder="아이디" required />
+                <input type="password" id="password" placeholder="비밀번호" required />
+                <button type="submit">로그인</button>
+            </form>
+        </div>
     </div>
-  </header>
-  <main>
-    <h1>여행선택의 목적지</h1>
-    <p>지금 떠나고 싶은 도시를 찾아보세요!</p>
-  </main>
 
-  <!-- 푸터 -->
-  <footer>
-    © 2025 여행의 모든 것. All rights reserved.
-  </footer>
+    <footer>
+        © 2025 여행의 모든 것. All rights reserved.
+    </footer>
+
+    <script>
+        // 요소 가져오기
+        const loginModal = document.getElementById('login-modal');
+        const authButton = document.getElementById('authButton'); // 로그인/로그아웃 버튼
+        const closeButton = document.querySelector('.close-button');
+        const loginForm = document.getElementById('login-form');
+
+        let isLoggedIn = false; // 로그인 상태를 추적하는 변수
+
+        // 로그인 모달을 여는 함수
+        function openLoginModal() {
+            loginModal.style.display = 'flex'; // 모달을 보이게 설정
+        }
+
+        // 로그인 모달을 닫는 함수
+        function closeLoginModal() {
+            loginModal.style.display = 'none'; // 모달을 숨기게 설정
+        }
+
+        // 로그인/로그아웃 버튼 텍스트와 동작을 업데이트하는 함수
+        function updateAuthButton() {
+            if (isLoggedIn) {
+                authButton.textContent = '로그아웃';
+                authButton.removeEventListener('click', openLoginModal); // 기존 리스너 제거
+                authButton.addEventListener('click', handleLogout); // 로그아웃 리스너 추가
+            } else {
+                authButton.textContent = '로그인';
+                authButton.removeEventListener('click', handleLogout); // 기존 리스너 제거
+                authButton.addEventListener('click', openLoginModal); // 로그인 리스너 추가
+            }
+        }
+
+        // 로그인 제출 처리
+        function handleLogin(event) {
+            event.preventDefault(); // 기본 폼 제출 방지
+
+            const usernameInput = document.getElementById('username').value;
+            const passwordInput = document.getElementById('password').value;
+
+            // 간단한 클라이언트 측 유효성 검사 (데모용)
+            if (usernameInput === '' || passwordInput === '') {
+                alert('아이디와 비밀번호를 모두 입력해주세요.');
+                return;
+            }
+
+            // --- 로그인 시도 시뮬레이션 ---
+            // 실제 애플리케이션에서는 이 자격 증명을 서버로 전송합니다
+            // (fetch() 또는 XMLHttpRequest를 사용하여) 서버의 응답을 처리합니다.
+            if (usernameInput === 'user' && passwordInput === 'pass') {
+                alert('로그인 성공!');
+                isLoggedIn = true; // 로그인 상태 업데이트
+                updateAuthButton(); // 버튼 텍스트 업데이트
+                closeLoginModal(); // 로그인 성공 시 모달 닫기
+                // 여기에서 사용자를 리디렉션하거나 UI를 업데이트할 수 있습니다.
+            } else {
+                alert('아이디 또는 비밀번호가 올바르지 않습니다.');
+            }
+
+            // 시도 후 폼 필드 지우기
+            loginForm.reset();
+        }
+
+        // 로그아웃 처리
+        function handleLogout() {
+            const confirmLogout = confirm('로그아웃 하시겠습니까?');
+            if (confirmLogout) {
+                isLoggedIn = false; // 로그인 상태 변경
+                updateAuthButton(); // 버튼 텍스트 업데이트
+                alert('로그아웃 되었습니다.');
+                // 실제 애플리케이션에서는 세션 무효화 등 서버 측 로그아웃 처리가 필요합니다.
+            }
+        }
+
+        // 초기 버튼 상태 설정
+        updateAuthButton();
+
+        // 이벤트 리스너
+        closeButton.addEventListener('click', closeLoginModal);
+        loginForm.addEventListener('submit', handleLogin);
+
+        // 모달 외부 클릭 시 모달 닫기 (선택 사항)
+        window.addEventListener('click', (event) => {
+            if (event.target === loginModal) {
+                closeLoginModal();
+            }
+        });
+    </script>
 </body>
 </html>
 
