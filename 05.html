@@ -95,20 +95,17 @@
   </header>
 
   <div class="container">
-
- 
-
     <section class="contact-box">
       <h2>1:1 문의</h2>
-      <form>
+      <form id="inquiryForm">
         <label for="name">이름</label>
-        <input type="text" id="name" placeholder="이름을 입력하세요" required />
+        <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required />
 
         <label for="email">이메일</label>
-        <input type="email" id="email" placeholder="답변 받을 이메일" required />
+        <input type="email" id="email" name="email" placeholder="답변 받을 이메일" required />
 
         <label for="message">문의 내용</label>
-        <textarea id="message" rows="5" placeholder="문의하실 내용을 적어주세요." required></textarea>
+        <textarea id="message" name="message" rows="5" placeholder="문의하실 내용을 적어주세요." required></textarea>
 
         <button type="submit">문의하기</button>
       </form>
@@ -121,6 +118,35 @@
       <p>🏢 주소: 서울시 폴리텍 인공지능능 123</p>
     </section>
   </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    // 문서가 로드되면 실행되는 jQuery 함수
+    $(document).ready(function() {
+      // #inquiryForm (폼)의 submit 이벤트를 감지
+      $('#inquiryForm').on('submit', function(event) {
+        // 폼의 기본 제출 동작(페이지 새로고침)을 막습니다.
+        event.preventDefault();
+
+        // 입력 필드의 값 가져오기
+        const name = $('#name').val();
+        const email = $('#email').val();
+        const message = $('#message').val();
+
+        // 유효성 검사: 모든 필드가 비어 있는지 확인
+        if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
+          alert('모든 필수 정보를 입력해주세요.');
+          return; // 함수 실행 중단
+        }
+
+        // 문의 완료 알림 표시
+        alert('문의가 완료되었습니다!');
+
+        // '숙제.html' 페이지로 이동
+        window.location.href = '숙제.html';
+      });
+    });
+  </script>
 
 </body>
 </html>
