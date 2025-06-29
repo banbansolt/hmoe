@@ -44,7 +44,7 @@
       bottom: -6px;
       width: 100%;
       height: 2px;
-      
+      background-color: #007aff;
     }
 
     .hero {
@@ -86,6 +86,7 @@
       width: 320px;
       overflow: hidden;
       transition: transform 0.3s ease;
+      cursor: pointer;
     }
 
     .card:hover {
@@ -112,16 +113,100 @@
       font-size: 14px;
       color: #555;
     }
+
+    /* 모달 스타일 */
+    .modal {
+      display: none; /* 기본적으로 숨김 */
+      position: fixed; /* 화면에 고정 */
+      z-index: 1; /* 다른 요소 위에 표시 */
+      left: 0;
+      top: 0;
+      width: 100%; /* 전체 너비 */
+      height: 100%; /* 전체 높이 */
+      overflow: auto; /* 내용이 넘칠 경우 스크롤 */
+      background-color: rgba(0,0,0,0.4); /* 배경을 어둡게 */
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto; /* 가운데 정렬 */
+      padding: 30px;
+      border: 1px solid #888;
+      width: 80%; /* 모달 너비 */
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    .modal-content label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      text-align: left;
+      color: #555;
+    }
+
+    .modal-content input[type="text"],
+    .modal-content input[type="date"],
+    .modal-content input[type="number"] { /* 추가된 부분: number 타입 input 스타일 */
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .modal-buttons {
+      display: flex;
+      justify-content: space-around;
+      gap: 10px;
+    }
+
+    .modal-buttons button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .modal-buttons button.confirm {
+      background-color: #007aff;
+      color: white;
+    }
+
+    .modal-buttons button.confirm:hover {
+      background-color: #005bb5;
+    }
+
+    .modal-buttons button.cancel {
+      background-color: #ccc;
+      color: #333;
+    }
+
+    .modal-buttons button.cancel:hover {
+      background-color: #bbb;
+    }
   </style>
 </head>
 <body>
   <header>
     <nav>
       <ul>
-        <li><a href="숙제.html" class="active">전체메뉴</a></li>
+        <li><a href="숙제.html">전체메뉴</a></li>
         <li><a href="00.html">국내 · 제주</a></li>
         <li><a href="01.html">해외여행</a></li>
-       
         <li><a href="03.html">여행팁</a></li>
         <li><a href="05.html">고객센터</a></li>
         <li><a href="#">☰</a></li>
@@ -134,15 +219,15 @@
     <p>지금 떠나고 싶은 도시를 찾아보세요!</p>
   </section>
 
-  <section class="cards">
-    <div class="card">
+    <section class="cards">
+    <div class="card" data-city="강원도">
       <img src="imgs/4.jpg" alt="강원도">
       <div class="card-content">
         <h3>강원도</h3>
         <p>산과 바다의 공존, 깨끗한 자연.</p>
       </div>
     </div>
-    <div class="card">
+    <div class="card" data-city="제주도">
       <img src="imgs/1.jpg" alt="제주도">
       <div class="card-content">
         <h3>제주도</h3>
@@ -150,22 +235,93 @@
       </div>
     </div>
   </section>
-    <section class="cards">
-    <div class="card">
+  <section class="cards">
+    <div class="card" data-city="경상도">
       <img src="imgs/5.jpg" alt="경상도">
       <div class="card-content">
         <h3>경상도</h3>
         <p>신라 천년고도, 역사 여행.</p>
       </div>
     </div>
-    <div class="card">
+    <div class="card" data-city="서울 & 근교">
       <img src="imgs/3.jpg" alt="서울 & 근교">
       <div class="card-content">
         <h3>서울 & 근교</h3>
-        <p>전통과 현대가 공존하는 도시 도쿄.</p>
+        <p>활기찬 도시와 전통 문화의 조화.</p>
       </div>
     </div>
-  
+  </section>
+
+  <div id="applicationModal" class="modal">
+    <div class="modal-content">
+      <h2 id="modalCityName"></h2>
+      <p>여행 신청을 위해 정보를 입력해주세요.</p>
+      <label for="applicantName">이름:</label>
+      <input type="text" id="applicantName" placeholder="이름을 입력하세요">
+
+      <label for="travelDate">여행 희망 날짜:</label>
+      <input type="date" id="travelDate">
+
+      <label for="travelDays">여행 기간 (일):</label> <input type="number" id="travelDays" placeholder="예: 3" min="1">
+
+      <div class="modal-buttons">
+        <button class="confirm" id="confirmApplication">신청</button>
+        <button class="cancel" id="cancelApplication">취소</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      let selectedCity = ""; // 선택된 도시 이름을 저장할 변수
+
+      // 각 카드 요소를 클릭했을 때 이벤트 처리
+      $('.card').on('click', function() {
+        selectedCity = $(this).data('city'); // data-city 속성에서 도시 이름 가져오기
+        $('#modalCityName').text(`${selectedCity} 여행 신청`); // 모달 제목 설정
+        $('#applicationModal').css('display', 'flex'); // 모달 보이기
+      });
+
+      // 모달의 '신청' 버튼 클릭 시
+      $('#confirmApplication').on('click', function() {
+        const name = $('#applicantName').val();
+        const date = $('#travelDate').val();
+        const days = $('#travelDays').val(); // 추가된 부분: 여행 기간 값 가져오기
+
+        if (name.trim() === "" || date.trim() === "" || days.trim() === "") { // 유효성 검사 추가
+          alert("이름, 여행 희망 날짜, 여행 기간을 모두 입력해주세요.");
+          return;
+        }
+
+        alert(`[${selectedCity} 여행 신청 완료]\n이름: ${name}\n날짜: ${date}\n기간: ${days}일\n담당자가 곧 연락드릴 것입니다.`); // 알림창에 기간 추가
+        $('#applicationModal').css('display', 'none'); // 모달 숨기기
+        $('#applicantName').val(''); // 입력 필드 초기화
+        $('#travelDate').val(''); // 입력 필드 초기화
+        $('#travelDays').val(''); // 추가된 부분: 여행 기간 입력 필드 초기화
+      });
+
+      // 모달의 '취소' 버튼 클릭 시
+      $('#cancelApplication').on('click', function() {
+        $('#applicationModal').css('display', 'none'); // 모달 숨기기
+        $('#applicantName').val(''); // 입력 필드 초기화
+        $('#travelDate').val(''); // 입력 필드 초기화
+        $('#travelDays').val(''); // 추가된 부분: 여행 기간 입력 필드 초기화
+        alert("여행 신청이 취소되었습니다.");
+      });
+
+      // 모달 바깥 영역 클릭 시 모달 닫기
+      $(window).on('click', function(event) {
+        if ($(event.target).is('#applicationModal')) {
+          $('#applicationModal').css('display', 'none');
+          $('#applicantName').val('');
+          $('#travelDate').val('');
+          $('#travelDays').val(''); // 추가된 부분: 여행 기간 입력 필드 초기화
+          alert("여행 신청이 취소되었습니다.");
+        }
+      });
+    });
+  </script>
 </body>
 </html>
 
